@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 
+import Home from './templates/Home'
+
 export default function App() {
 
   // Aplicando autenticação de login - Mockado
@@ -12,7 +14,7 @@ export default function App() {
         
         <Route path="" element={<p>login</p>} />
 
-        <Route path="home" element={isAuthenticated ? <p>home</p> : <Navigate to="/" />} >
+        <Route path="home" element={isAuthenticated ? <Home /> : <Navigate to="/" />} >
           <Route path="stock" element={<p>stock</p>} />
           <Route path="sales" element={<p>sales</p>} />
           <Route path="clients" element={<p>clients</p>} />
