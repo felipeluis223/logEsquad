@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 import Home from './templates/Home'
 import Login from './components/Login'
+import Profile from './components/Profile';
 
 export default function App() {
 
@@ -35,11 +36,12 @@ export default function App() {
         
         <Route path="" element={<Login onLogin={handleLogin} />} />
 
-        <Route path="home" element={isAuthenticated ? <Home onLogout={handleLogout} /> : <Navigate to="/" />} >
+        <Route path="home" element={isAuthenticated ? <Home /> : <Navigate to="/" />} >
+          <Route path="" element={<p>home</p>} />
           <Route path="stock" element={<p>stock</p>} />
           <Route path="sales" element={<p>sales</p>} />
           <Route path="clients" element={<p>clients</p>} />
-          <Route path="profile" element={<p>profile</p>} />
+          <Route path="profile" element={<Profile onLogout={handleLogout} />} />
         </Route>
 
         <Route path="*" element={<p>Not Found - 404</p>} />
